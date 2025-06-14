@@ -30,6 +30,7 @@ body {
     display: flex; /* Use Flexbox for centering */
     justify-content: center;
     align-items: center;
+    flex-direction: column; /* Allow content to stack */
 }
 
 /* #hero-section Styling */
@@ -42,6 +43,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 20px;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 /* #the-seed Styling */
@@ -93,4 +95,109 @@ body {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+/* #blooms-section Styling */
+#blooms-section {
+    width: 100%;
+    padding: 50px 20px; /* Top/bottom padding for spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers blooms horizontally */
+    gap: 80px; /* Spacing between blooms for scroll effect */
+}
+
+/* .gratitude-bloom Styling */
+.gratitude-bloom {
+    position: relative;
+    width: 90%; /* Max width for mobile */
+    max-width: 400px; /* Prevents them from becoming too wide on tablets/desktops */
+    aspect-ratio: 1 / 1; /* Makes it a square container */
+    cursor: pointer;
+    opacity: 0; /* Initially hidden, will animate in on scroll */
+    transform: translateY(50px); /* Starts below its final position */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* For scroll animation */
+}
+
+/* State for when it's in view (JS will add this class) */
+.gratitude-bloom.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* .bloom-inner Styling (The Visual "Petal/Orb") */
+.bloom-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* To make it circular */
+    background: linear-gradient(135deg, #a8dadc, #457b9d); /* Initial gradient */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease-out, border-radius 0.4s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Subtle Internal Pulse Animation */
+@keyframes bloom-pulse {
+    0% {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.bloom-inner {
+    animation: bloom-pulse 3s infinite alternate ease-in-out;
+}
+
+/* .bloom-message Styling (Initially Hidden) */
+.bloom-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Dark overlay when open */
+    border-radius: 50%; /* Initially matches bloom-inner's shape */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none; /* So clicks pass through when hidden */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out, border-radius 0.4s ease-out;
+    z-index: 2;
+}
+
+/* Text Styling inside p */
+.bloom-message p {
+    font-size: 1.1em;
+    line-height: 1.4;
+    color: #f1faee;
+}
+
+/* .gratitude-bloom.open State (When a Bloom is Tapped) */
+.gratitude-bloom.open .bloom-inner {
+    transform: scale(1.1); /* Slightly expand inner bloom */
+}
+
+.gratitude-bloom.open .bloom-message {
+    opacity: 1;
+    transform: scale(1);
+    border-radius: 15px; /* Change to a rounded rectangle */
+    pointer-events: auto;
+}
+
+/* Dynamic Background Color Transition for body */
+body {
+    transition: background-color 1s ease-in-out; /* Smooth transition for JS changes */
 } 
