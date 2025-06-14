@@ -377,4 +377,113 @@ body.no-cursor #custom-cursor {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* #heart-section Styling */
+#heart-section {
+    width: 100%;
+    min-height: 100vh; /* Make it full-screen for impact */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    opacity: 0; /* Initially hidden, will animate in when scrolled to */
+    transition: opacity 1s ease-out;
+}
+
+/* #heart-title Styling */
+#heart-title {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #f1faee;
+    opacity: 0;
+    transform: translateY(20px);
+    /* Subtle Animation */
+    animation: heart-title-appear 1s forwards ease-out 0.5s; /* Delayed */
+}
+
+@keyframes heart-title-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* #final-message-container Styling */
+#final-message-container {
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.7); /* Subtle dark background for readability */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    transform: translateY(50px);
+    opacity: 0;
+    transition: opacity 1s ease-out 1s, transform 1s ease-out 1s; /* Delayed to appear after title */
+}
+
+/* #final-message Styling */
+#final-message {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #e6e6e6;
+    font-style: italic;
+}
+
+/* #signature-footer Styling */
+#signature-footer {
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 1.1em;
+    color: #a8dadc; /* A gentle accent color */
+    line-height: 1.5;
+    opacity: 0;
+    transition: opacity 1s ease-out 1.5s; /* Delayed to appear after the message */
+}
+
+/* Responsive Adjustments for Larger Screens */
+@media (min-width: 768px) {
+    #main-title {
+        font-size: 3.5em;
+    }
+
+    #action-prompt {
+        font-size: 1.5em;
+    }
+
+    .gratitude-bloom {
+        width: 70%;
+    }
+
+    #final-message-section h2 {
+        font-size: 4em;
+    }
+
+    #final-message-section p {
+        font-size: 1.6em;
+    }
+
+    #action-buttons {
+        flex-direction: row;
+        gap: 25px;
+        max-width: 500px;
+    }
+
+    #heart-title {
+        font-size: 3em;
+    }
+
+    #final-message {
+        font-size: 1.4em;
+    }
+
+    #signature-footer {
+        font-size: 1.3em;
+    }
 } 

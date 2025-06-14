@@ -200,4 +200,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // "Heart of Gratitude" Section Visibility & Animation Trigger
+    const heartSection = document.getElementById('heart-section');
+    const heartTitle = document.getElementById('heart-title');
+    const finalMessageContainer = document.getElementById('final-message-container');
+    const signatureFooter = document.getElementById('signature-footer');
+
+    if (heartSection && heartTitle && finalMessageContainer && signatureFooter) {
+        const heartObserverOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.3 // Trigger when 30% of the section is visible
+        };
+
+        const heartObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    heartSection.style.opacity = '1';
+                    // Trigger animations by setting opacity/transform, relying on CSS transitions
+                    // For elements with @keyframes, the animation property in CSS will handle it.
+                    // For elements with simple transitions, changing opacity/transform here will work.
+
+                    // Trigger final background color
+                    document.body.style.backgroundColor = '#2c0a3d'; // Deep, rich culmination color
+                } else {
+                    heartSection.style.opacity = '0';
+                    // Optionally reset animations if scrolling back up
+                    document.body.style.backgroundColor = colors[0]; // Revert to first color or handle based on scroll
+                }
+            });
+        }, heartObserverOptions);
+
+        heartObserver.observe(heartSection);
+    }
 }); 
