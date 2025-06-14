@@ -95,6 +95,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Map progress to color index
         const colorIndex = Math.floor(scrollProgress * (colors.length - 1));
         document.body.style.backgroundColor = colors[colorIndex];
+
+        // Apply subtle parallax to blooms
+        gratitudeBlooms.forEach(bloom => {
+            const rect = bloom.getBoundingClientRect();
+            const viewportCenter = window.innerHeight / 2;
+            const bloomCenter = rect.top + rect.height / 2;
+            const distanceToCenter = viewportCenter - bloomCenter;
+            
+            // Adjust sensitivity for parallax (smaller multiplier = less movement)
+            const parallaxOffset = distanceToCenter * 0.1; // Adjust this value for more/less parallax
+            bloom.style.setProperty('--bloom-parallax-offset', `${parallaxOffset}px`);
+        });
     };
 
     window.addEventListener('scroll', throttle(handleScroll, 100)); // Throttle to 100ms
