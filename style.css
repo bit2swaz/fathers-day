@@ -329,14 +329,24 @@ body.no-cursor #custom-cursor {
 }
 
 #start-over-btn {
-    background-color: #e63946;
-    color: #fff;
+    padding: 15px 20px;
+    border: 2px solid #a8dadc;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    cursor: pointer;
+    background-color: transparent;
+    color: #a8dadc;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #start-over-btn:hover {
-    background-color: #c42d38;
+    background-color: #a8dadc;
+    color: #0d1117;
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    border-color: #a8dadc;
 }
 
 #share-btn {
@@ -353,106 +363,110 @@ body.no-cursor #custom-cursor {
 /* Responsive Adjustments for Larger Screens */
 @media (min-width: 768px) {
     #main-title {
-        font-size: 4em;
+        font-size: 4.5em; /* Slightly larger for PC */
     }
 
     #action-prompt {
-        font-size: 1.8em;
+        font-size: 2em; /* Slightly larger for PC */
     }
 
     .gratitude-bloom {
         width: 60%;
-        max-width: 500px;
+        max-width: 550px; /* Allow blooms to be a bit larger */
+    }
+
+    .bloom-message p {
+        font-size: 1.2em; /* Ensure bloom message font scales up */
     }
 
     #final-message-section h2 {
-        font-size: 5em;
+        font-size: 5.5em; /* Slightly larger for PC */
     }
 
-    #final-message-section p {
-        font-size: 1.8em;
+    .final-message-box {
+        max-width: 750px; /* Allow wider messages on desktop */
+    }
+
+    .final-message-text {
+        font-size: 1.8em; /* Ensure final message font scales up */
     }
 
     #action-buttons {
         flex-direction: row;
-        gap: 30px;
-        max-width: 600px;
+        gap: 35px; /* Increased gap */
+        max-width: 650px;
     }
 
     #heart-title {
-        font-size: 4em;
-    }
-
-    #final-message {
-        font-size: 1.6em;
+        font-size: 4.5em; /* Slightly larger for PC */
     }
 
     #signature-footer {
-        font-size: 1.5em;
+        font-size: 1.6em; /* Slightly larger for PC */
     }
 
     .tap-prompt {
-        font-size: 1.2em;
+        font-size: 1.3em; /* Slightly larger for PC */
     }
 
     #final-start-over-container {
-        margin-top: 80px;
-        padding-bottom: 50px;
+        margin-top: 100px; /* More spacing */
+        padding-bottom: 70px;
     }
 
     #final-start-over-btn {
-        font-size: 1.2em;
-        padding: 18px 25px;
+        font-size: 1.3em; /* Slightly larger for PC */
+        padding: 20px 28px;
     }
 }
 
 @media (min-width: 1200px) {
     #main-title {
-        font-size: 5em;
+        font-size: 6em; /* Even larger for very big screens */
     }
 
     #action-prompt {
-        font-size: 2.2em;
+        font-size: 2.5em; /* Even larger for very big screens */
     }
 
     .gratitude-bloom {
-        width: 50%;
-        max-width: 600px; /* Allow blooms to be a bit larger */
+        width: 45%; /* Slightly smaller for better spacing on desktop */
+        max-width: 700px;
     }
 
     #blooms-section {
-        gap: 100px; /* More space between blooms */
+        gap: 120px; /* More space between blooms */
     }
 
     #final-message-section h2 {
-        font-size: 6em;
+        font-size: 7em; /* Even larger for very big screens */
     }
 
     .final-message-box {
-        max-width: 800px; /* Allow wider messages */
+        max-width: 900px; /* Allow wider messages */
     }
 
     .final-message-text {
-        font-size: 1.8em;
+        font-size: 2em; /* Even larger for very big screens */
     }
 
     #heart-title {
-        font-size: 5em;
+        font-size: 6em; /* Even larger for very big screens */
     }
 
     #signature-footer {
-        font-size: 1.8em;
-        padding: 60px 20px; /* More padding */
+        font-size: 2em; /* Even larger for very big screens */
+        padding: 80px 20px; /* More padding */
     }
 
     #action-buttons {
-        max-width: 700px;
-        gap: 40px;
+        max-width: 800px;
+        gap: 50px;
     }
 
     #final-start-over-btn {
-        font-size: 1.4em;
-        padding: 20px 30px;
+        font-size: 1.6em; /* Even larger for very big screens */
+        padding: 22px 35px;
     }
 }
 
@@ -620,18 +634,21 @@ body.no-cursor #custom-cursor {
 
 #final-start-over-btn {
     padding: 15px 20px;
-    border: none;
+    border: 2px solid #a8dadc; /* Subtle border that matches accent color */
     border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.1em;
     cursor: pointer;
-    background-color: #e63946; /* Red for reset, consistent with other button */
-    color: #fff;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    background-color: transparent; /* Make background transparent initially */
+    color: #a8dadc; /* Text color matching accent */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #final-start-over-btn:hover {
-    background-color: #c42d38;
+    background-color: #a8dadc; /* Fill with accent color on hover */
+    color: #0d1117; /* Dark text on hover */
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+    border-color: #a8dadc; /* Keep border consistent on hover */
 } 
