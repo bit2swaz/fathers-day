@@ -201,10 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // "Heart of Gratitude" Section Visibility & Animation Trigger
     const heartSection = document.getElementById('heart-section');
     const heartTitle = document.getElementById('heart-title');
-    const finalMessageContainer = document.getElementById('final-message-container');
+    const finalMessageBoxes = document.querySelectorAll('.final-message-box');
     const signatureFooter = document.getElementById('signature-footer');
 
-    if (heartSection && heartTitle && finalMessageContainer && signatureFooter) {
+    if (heartSection && heartTitle && finalMessageBoxes.length > 0 && signatureFooter) {
         const heartObserverOptions = {
             root: null, // viewport
             rootMargin: '0px',
@@ -218,9 +218,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Trigger animations for children elements
                     heartTitle.style.opacity = '1';
                     heartTitle.style.transform = 'translateY(0)';
-                    finalMessageContainer.style.opacity = '1';
-                    finalMessageContainer.style.transform = 'translateY(0)';
-                    signatureFooter.style.opacity = '1';
+
+                    finalMessageBoxes.forEach((box, index) => {
+                        // Add a slight delay for each box to make them appear sequentially
+                        setTimeout(() => {
+                            box.style.opacity = '1';
+                            box.style.transform = 'translateY(0)';
+                        }, 500 + (index * 300)); // 500ms initial delay + 300ms for each subsequent box
+                    });
+
+                    setTimeout(() => {
+                        signatureFooter.style.opacity = '1';
+                    }, 500 + (finalMessageBoxes.length * 300) + 300); // Delay after messages appear
 
                     // Trigger final background color
                     document.body.style.backgroundColor = '#2c0a3d'; // Deep, rich culmination color
@@ -229,8 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Reset animations if scrolling back up
                     heartTitle.style.opacity = '0';
                     heartTitle.style.transform = 'translateY(20px)';
-                    finalMessageContainer.style.opacity = '0';
-                    finalMessageContainer.style.transform = 'translateY(50px)';
+
+                    finalMessageBoxes.forEach(box => {
+                        box.style.opacity = '0';
+                        box.style.transform = 'translateY(50px)';
+                    });
+
                     signatureFooter.style.opacity = '0';
 
                     document.body.style.backgroundColor = colors[0]; // Revert to first color or handle based on scroll

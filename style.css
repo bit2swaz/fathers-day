@@ -438,13 +438,13 @@ body.no-cursor #custom-cursor {
 
 /* #heart-title Styling */
 #heart-title {
-    font-family: 'Lora', serif; /* Sentimental font for heart title */
+    font-family: 'Lora', serif;
     font-size: 2em;
     margin-bottom: 30px;
     color: #f1faee;
     opacity: 0;
     transform: translateY(20px);
-    animation: heart-title-appear 1.2s forwards ease-out 0.8s; /* Delayed and smoother */
+    animation: heart-title-appear 1.2s forwards ease-out 0.8s;
 }
 
 @keyframes heart-title-appear {
@@ -458,8 +458,19 @@ body.no-cursor #custom-cursor {
     }
 }
 
-/* #final-message-container Styling */
-#final-message-container {
+/* #final-messages-wrapper Styling */
+#final-messages-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between the two message boxes */
+    align-items: center;
+    width: 100%;
+    max-width: 600px; /* Max width for the wrapper */
+    margin-top: 30px; /* Space from title */
+}
+
+/* .final-message-box Styling */
+.final-message-box {
     max-width: 500px;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 30px;
@@ -467,12 +478,13 @@ body.no-cursor #custom-cursor {
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     transform: translateY(50px);
     opacity: 0;
-    transition: opacity 1.2s ease-out 1.2s, transform 1.2s ease-out 1.2s; /* Delayed and smoother */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out; /* Delayed and smoother */
+    margin: 0 auto; /* Center individual boxes */
 }
 
-/* #final-message Styling */
-#final-message {
-    font-family: 'Montserrat', sans-serif; /* Primary font for final message */
+/* .final-message-text Styling */
+.final-message-text {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.2em;
     line-height: 1.6;
     color: #e6e6e6;
@@ -481,7 +493,7 @@ body.no-cursor #custom-cursor {
 
 /* #signature-footer Styling */
 #signature-footer {
-    font-family: 'Lora', serif; /* Sentimental font for signature */
+    font-family: 'Lora', serif;
     width: 100%;
     padding: 40px 20px;
     text-align: center;
@@ -489,7 +501,7 @@ body.no-cursor #custom-cursor {
     color: #a8dadc;
     line-height: 1.5;
     opacity: 0;
-    transition: opacity 1.5s ease-out 2s; /* Delayed and smoother */
+    transition: opacity 1.5s ease-out 2s;
 }
 
 /* .tap-prompt Styling */
