@@ -187,14 +187,21 @@ body {
 
 /* .gratitude-bloom.open State (When a Bloom is Tapped) */
 .gratitude-bloom.open .bloom-inner {
-    transform: scale(1.1); /* Slightly expand inner bloom */
+    transform: scale(0.8); /* Slightly shrink inner bloom to give space for message */
+    opacity: 0;
 }
 
 .gratitude-bloom.open .bloom-message {
     opacity: 1;
     transform: scale(1);
-    border-radius: 15px; /* Change to a rounded rectangle */
+    border-radius: 20px; /* More rounded rectangle for a softer look */
     pointer-events: auto;
+    background-color: rgba(10, 44, 61, 0.9); /* A slightly more pronounced dark background when open */
+}
+
+/* Ensure the message text remains centered and visible */
+.gratitude-bloom.open .bloom-message p {
+    opacity: 1;
 }
 
 /* Dynamic Background Color Transition for body */

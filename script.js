@@ -218,15 +218,24 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     heartSection.style.opacity = '1';
-                    // Trigger animations by setting opacity/transform, relying on CSS transitions
-                    // For elements with @keyframes, the animation property in CSS will handle it.
-                    // For elements with simple transitions, changing opacity/transform here will work.
+                    // Trigger animations for children elements
+                    heartTitle.style.opacity = '1';
+                    heartTitle.style.transform = 'translateY(0)';
+                    finalMessageContainer.style.opacity = '1';
+                    finalMessageContainer.style.transform = 'translateY(0)';
+                    signatureFooter.style.opacity = '1';
 
                     // Trigger final background color
                     document.body.style.backgroundColor = '#2c0a3d'; // Deep, rich culmination color
                 } else {
                     heartSection.style.opacity = '0';
-                    // Optionally reset animations if scrolling back up
+                    // Reset animations if scrolling back up
+                    heartTitle.style.opacity = '0';
+                    heartTitle.style.transform = 'translateY(20px)';
+                    finalMessageContainer.style.opacity = '0';
+                    finalMessageContainer.style.transform = 'translateY(50px)';
+                    signatureFooter.style.opacity = '0';
+
                     document.body.style.backgroundColor = colors[0]; // Revert to first color or handle based on scroll
                 }
             });
