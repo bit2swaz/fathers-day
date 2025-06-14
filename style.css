@@ -200,4 +200,181 @@ body {
 /* Dynamic Background Color Transition for body */
 body {
     transition: background-color 1s ease-in-out; /* Smooth transition for JS changes */
+}
+
+/* #final-message-section Styling */
+#final-message-section {
+    width: 100%;
+    padding: 100px 20px; /* Ample padding for visibility */
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    color: #e6e6e6; /* Light text color */
+}
+
+#final-message-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#final-message-section h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #f1faee;
+}
+
+#final-message-section p {
+    font-size: 1.4em;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Custom Cursor Styling */
+#custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    pointer-events: none; /* Crucial: allows clicks to pass through */
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out, width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out;
+    z-index: 9999;
+    mix-blend-mode: difference; /* Creates a cool effect over different backgrounds */
+}
+
+body.no-cursor #custom-cursor {
+    display: none;
+}
+
+/* Hover effect for interactive elements */
+#the-seed:hover ~ #custom-cursor,
+.gratitude-bloom:hover ~ #custom-cursor {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* #action-buttons Styling */
+#action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 50px;
+    padding-bottom: 50px; /* Space before footer */
+    width: 90%;
+    max-width: 300px;
+}
+
+#action-buttons button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#start-over-btn {
+    background-color: #e63946; /* Red for reset */
+    color: #fff;
+}
+
+#start-over-btn:hover {
+    background-color: #c42d38;
+    transform: translateY(-2px);
+}
+
+#share-btn {
+    background-color: #4CAF50; /* Green for share */
+    color: #fff;
+}
+
+#share-btn:hover {
+    background-color: #3d8c40;
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments for Larger Screens */
+@media (min-width: 768px) {
+    #main-title {
+        font-size: 3.5em;
+    }
+
+    #action-prompt {
+        font-size: 1.5em;
+    }
+
+    .gratitude-bloom {
+        width: 70%;
+    }
+
+    #final-message-section h2 {
+        font-size: 4em;
+    }
+
+    #final-message-section p {
+        font-size: 1.6em;
+    }
+
+    #action-buttons {
+        flex-direction: row;
+        gap: 25px;
+        max-width: 500px;
+    }
+}
+
+/* Custom Scrollbar Styling (Webkit only) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6a6a6a;
+}
+
+/* Preloader Styling */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d1117;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.5s ease-out;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid #4CAF50;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 } 

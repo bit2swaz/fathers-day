@@ -101,4 +101,103 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial call to set background color based on current scroll position
     handleScroll();
+
+    // Final Message Section Appearance using Intersection Observer
+    const finalMessageSection = document.getElementById('final-message-section');
+    if (finalMessageSection) { // Ensure the element exists
+        const finalMessageObserverOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        };
+
+        const finalMessageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    // Optionally, stop observing once it's in view
+                    // observer.unobserve(entry.target);
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, finalMessageObserverOptions);
+
+        finalMessageObserver.observe(finalMessageSection);
+    }
+
+    // Custom Cursor Functionality
+    const customCursor = document.getElementById('custom-cursor');
+
+    // Detect touch devices
+    const isTouchDevice = () => ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+
+    if (customCursor && !isTouchDevice()) {
+        document.body.style.cursor = 'none'; // Hide default cursor
+
+        window.addEventListener('mousemove', (e) => {
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
+        });
+
+        // Optional: Hide custom cursor when mouse leaves the document
+        document.body.addEventListener('mouseleave', () => {
+            customCursor.style.opacity = '0';
+        });
+
+        document.body.addEventListener('mouseenter', () => {
+            customCursor.style.opacity = '1';
+        });
+    } else if (customCursor && isTouchDevice()) {
+        customCursor.style.display = 'none'; // Hide custom cursor on touch devices
+    }
+
+    // Preloader functionality
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            preloader.classList.add('hidden');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500); // Match transition duration
+        });
+    }
+
+    // "Start Over" button logic
+    const startOverBtn = document.getElementById('start-over-btn');
+    if (startOverBtn) {
+        startOverBtn.addEventListener('click', () => {
+            window.location.reload(); // Reload the page
+        });
+    }
+
+    // "Share" button logic
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', async () => {
+            const shareData = {
+                title: 'For My Dad - A Message of Gratitude',
+                text: 'Discover a blooming message of gratitude for Dad!',
+                url: window.location.href
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                    console.log('Content shared successfully');
+                } else {
+                    // Fallback for browsers that do not support Web Share API
+                    alert('Sharing is not supported in this browser. You can copy the URL: ' + window.location.href);
+                    // Optionally, copy to clipboard
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        console.log('Page URL copied to clipboard');
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+                }
+            } catch (err) {
+                console.error('Error sharing:', err);
+            }
+        });
+    }
 }); 
