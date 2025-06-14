@@ -52,6 +52,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    max-width: 1600px; /* Max width for large screens */
+    margin: 0 auto; /* Center the container */
 }
 
 /* #hero-section Styling */
@@ -169,7 +171,7 @@ body {
     border-radius: 50%;
     background: linear-gradient(135deg, #a8dadc, #457b9d);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), border-radius 1.5s ease-out, opacity 1.5s ease-out; /* Slower, smoother budding with new bezier */
+    transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1), border-radius 1.8s ease-out, opacity 1.8s ease-out; /* Slower, smoother budding */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -208,7 +210,7 @@ body {
     opacity: 0;
     transform: scale(0.7); /* Starts smaller for budding */
     pointer-events: none;
-    transition: opacity 1.5s ease-out, transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), border-radius 1.5s ease-out; /* Slower, smoother budding with new bezier */
+    transition: opacity 1.8s ease-out, transform 1.8s cubic-bezier(0.25, 1, 0.5, 1), border-radius 1.8s ease-out; /* Slower, smoother budding */
     z-index: 2;
 }
 
@@ -237,12 +239,14 @@ body {
 .gratitude-bloom.open .tap-prompt {
     opacity: 0;
     transform: scale(0.7); /* Scale down slightly as it fades */
-    transition: opacity 0.5s ease-in, transform 0.5s ease-in; /* Slightly slower and eased in for prompt fade out */
+    transition: opacity 0.6s ease-in, transform 0.6s ease-in; /* Slightly slower and eased in for prompt fade out */
 }
 
 /* Dynamic Background Color Transition for body */
 body {
     transition: background-color 1.5s ease-in-out;
+    position: relative; /* Needed for pseudo-element positioning */
+    overflow-x: hidden; /* Ensure no horizontal scroll from animations */
 }
 
 /* #final-message-section Styling */
@@ -389,6 +393,66 @@ body.no-cursor #custom-cursor {
 
     .tap-prompt {
         font-size: 1.2em;
+    }
+
+    #final-start-over-container {
+        margin-top: 80px;
+        padding-bottom: 50px;
+    }
+
+    #final-start-over-btn {
+        font-size: 1.2em;
+        padding: 18px 25px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #main-title {
+        font-size: 5em;
+    }
+
+    #action-prompt {
+        font-size: 2.2em;
+    }
+
+    .gratitude-bloom {
+        width: 50%;
+        max-width: 600px; /* Allow blooms to be a bit larger */
+    }
+
+    #blooms-section {
+        gap: 100px; /* More space between blooms */
+    }
+
+    #final-message-section h2 {
+        font-size: 6em;
+    }
+
+    .final-message-box {
+        max-width: 800px; /* Allow wider messages */
+    }
+
+    .final-message-text {
+        font-size: 1.8em;
+    }
+
+    #heart-title {
+        font-size: 5em;
+    }
+
+    #signature-footer {
+        font-size: 1.8em;
+        padding: 60px 20px; /* More padding */
+    }
+
+    #action-buttons {
+        max-width: 700px;
+        gap: 40px;
+    }
+
+    #final-start-over-btn {
+        font-size: 1.4em;
+        padding: 20px 30px;
     }
 }
 
@@ -541,4 +605,33 @@ body.no-cursor #custom-cursor {
     z-index: 3;
     pointer-events: none;
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    opacity: 0.85; /* Slightly more visible now */
+}
+
+/* New Start Over Button Styling */
+#final-start-over-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px; /* Space above and below */
+    margin-top: 50px;
+}
+
+#final-start-over-btn {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    background-color: #e63946; /* Red for reset, consistent with other button */
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#final-start-over-btn:hover {
+    background-color: #c42d38;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 } 

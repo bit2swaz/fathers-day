@@ -210,6 +210,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // New "Start Over" button at the end of the page
+    const finalStartOverBtn = document.getElementById('final-start-over-btn');
+    if (finalStartOverBtn) {
+        finalStartOverBtn.addEventListener('click', () => {
+            window.location.reload(); // Reload the page
+        });
+    }
+
     // "Heart of Gratitude" Section Visibility & Animation Trigger
     const heartSection = document.getElementById('heart-section');
     const heartTitle = document.getElementById('heart-title');
