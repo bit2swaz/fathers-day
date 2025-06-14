@@ -1,0 +1,96 @@
+/* Global Resets & Mobile-First Foundation */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Arial', sans-serif; /* Placeholder font */
+    background-color: #0d1117; /* Dark background */
+    color: #e6e6e6; /* Light text */
+}
+
+/* Disable Text Selection */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+/* #app-container Styling */
+#app-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex; /* Use Flexbox for centering */
+    justify-content: center;
+    align-items: center;
+}
+
+/* #hero-section Styling */
+#hero-section {
+    width: 100%;
+    min-height: 100vh; /* Ensures it takes full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* #the-seed Styling */
+#the-seed {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* To make it a circle */
+    background-color: #4CAF50; /* A pleasant initial color */
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7); /* Subtle glow */
+    cursor: pointer;
+    margin-bottom: 30px;
+    /* Pulsation Animation */
+    animation: pulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+    }
+    100% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(76, 175, 80, 1);
+    }
+}
+
+/* #main-title Styling */
+#main-title {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    opacity: 0; /* Will be faded in by JS later */
+    transition: opacity 0.5s ease-in-out; /* Add transition for JS fade-in */
+}
+
+/* #action-prompt Styling */
+#action-prompt {
+    font-size: 1.2em;
+    opacity: 0; /* Will be faded in by JS later */
+    /* Subtle Bounce/Fade-In Animation */
+    animation: bounceFadeIn 1s forwards ease-out 1.5s; /* Delayed to appear after title */
+}
+
+@keyframes bounceFadeIn {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+} 
