@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.2 // Trigger when 20% of the item is visible
     };
 
-    const bloomObserver = new IntersectionObserver((entries, observer) => {
+    const bloomObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
@@ -111,12 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
             threshold: 0.1 // Trigger when 10% of the item is visible
         };
 
-        const finalMessageObserver = new IntersectionObserver((entries, observer) => {
+        const finalMessageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
-                    // Optionally, stop observing once it's in view
-                    // observer.unobserve(entry.target);
                 } else {
                     entry.target.classList.remove('in-view');
                 }
@@ -188,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     // Fallback for browsers that do not support Web Share API
                     alert('Sharing is not supported in this browser. You can copy the URL: ' + window.location.href);
-                    // Optionally, copy to clipboard
                     navigator.clipboard.writeText(window.location.href).then(() => {
                         console.log('Page URL copied to clipboard');
                     }).catch(err => {
@@ -214,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             threshold: 0.3 // Trigger when 30% of the section is visible
         };
 
-        const heartObserver = new IntersectionObserver((entries, observer) => {
+        const heartObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     heartSection.style.opacity = '1';
