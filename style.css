@@ -376,7 +376,7 @@ body.no-cursor #custom-cursor {
     }
 
     .bloom-message p {
-        font-size: 1.2em; /* Ensure bloom message font scales up */
+        font-size: 1.4em; /* Ensure bloom message font scales up even more */
     }
 
     #final-message-section h2 {
@@ -398,11 +398,12 @@ body.no-cursor #custom-cursor {
     }
 
     #heart-title {
-        font-size: 4.5em; /* Slightly larger for PC */
+        font-size: 5em; /* Larger for PC */
     }
 
     #signature-footer {
-        font-size: 1.6em; /* Slightly larger for PC */
+        font-size: 1.8em; /* Larger for PC */
+        color: #e0f2f7; /* Lighter color to stand out */
     }
 
     .tap-prompt {
@@ -451,11 +452,11 @@ body.no-cursor #custom-cursor {
     }
 
     #heart-title {
-        font-size: 6em; /* Even larger for very big screens */
+        font-size: 6.5em; /* Even larger for very big screens */
     }
 
     #signature-footer {
-        font-size: 2em; /* Even larger for very big screens */
+        font-size: 2.2em; /* Even larger for very big screens */
         padding: 80px 20px; /* More padding */
     }
 
@@ -652,3 +653,8 @@ body.no-cursor #custom-cursor {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
     border-color: #a8dadc; /* Keep border consistent on hover */
 } 
+
+a {
+    text-decoration: none;
+    color: #a8dadc;
+}

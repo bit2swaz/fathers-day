@@ -177,11 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startOverBtn = document.getElementById('start-over-btn');
     if (startOverBtn) {
         startOverBtn.addEventListener('click', () => {
-            // Smoothly scroll to the top of the page (hero section)
-            window.scrollTo({
-                top: heroSection.offsetTop,
-                behavior: 'smooth'
-            });
+            window.location.reload(); // Reload the page to reset everything
         });
     }
 
@@ -218,11 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalStartOverBtn = document.getElementById('final-start-over-btn');
     if (finalStartOverBtn) {
         finalStartOverBtn.addEventListener('click', () => {
-            // Smoothly scroll to the top of the page (hero section)
-            window.scrollTo({
-                top: heroSection.offsetTop,
-                behavior: 'smooth'
-            });
+            window.location.reload(); // Reload the page to reset everything
         });
     }
 
